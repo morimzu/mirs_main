@@ -10,7 +10,7 @@ if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = My_Serial('/dev/tty.usbmodem141401', 115200)
+    ser = My_Serial('/dev/tty.usbmodem142401', 115200)
     
     count = 1
     file = get_image()
@@ -23,7 +23,7 @@ if __name__ == "__main__":
     for box in boxs:
         box.show()
 
-    order = Order('r',150, 150, 2000)
+    order = Order('l',000, 000, 3000)
 
     #ser.send('a0a0a0a0:')
     ser.send(order.order)

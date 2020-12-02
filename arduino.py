@@ -31,8 +31,6 @@ class My_Serial(serial.Serial):
         
     def check_response(self):
         print("Now waiting a response from the Arduino.")
-        print(self.read())
-        print(self.read())
         self.response = self.read_until(str.encode("OK"))[-2:]
         self.show_response()
     
