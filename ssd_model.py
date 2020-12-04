@@ -18,18 +18,18 @@ net = build_ssd('test', 300, 21)
 net.load_weights('./weights/DESK.pth')
 
 class Box:
-    def __init__(self, pos, wide, height, label):
+    def __init__(self, pos, width, height, label):
         self.pos = pos
         self.x_pos = pos[0]
         self.y_pos = pos[1]
-        self.wide = wide
+        self.width = width
         self.height = height
         self.label = label
     
     def show(self):
         print("label: ", self.label)
         print("position (x, y): ",self.pos)
-        print("wide: ", self.wide)
+        print("width: ", self.width)
         print("height: ",self.height)
 
 # 関数 detect    
