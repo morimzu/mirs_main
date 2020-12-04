@@ -5,5 +5,6 @@ import time
 
 if __name__ == "__main__":
     for i in range(100):
-        get_image(i)
+        count = ('0000' + str(i))[-5:]
+        get_image(count)
         time.sleep(0.1)

@@ -10,11 +10,11 @@ if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = My_Serial('/dev/tty.usbmodem142401', 115200)
+    #ser = My_Serial('/dev/tty.usbmodem142401', 115200)
     
     count = 1
-    file = get_image()
-    image = cv2.imread(file, cv2.IMREAD_COLOR)          
+    img = get_image()
+    image = cv2.imread(img, cv2.IMREAD_COLOR)          
     labels, boxs = detect(image, count)
     print(count)
     count += 1
@@ -26,5 +26,5 @@ if __name__ == "__main__":
     order = Order('l',000, 000, 3000)
 
     #ser.send('a0a0a0a0:')
-    ser.send(order.order)
+    #ser.send(order.order)
     #ser.checkout()

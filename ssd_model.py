@@ -13,11 +13,9 @@ import glob
 from ssd import build_ssd
 from matplotlib import pyplot as plt
 
-from camera import get_image
-
 # SSDモデルを読み込み
 net = build_ssd('test', 300, 21)   
-net.load_weights('./weights/ssd300_mAP_77.43_v2.pth')
+net.load_weights('./weights/DESK.pth')
 
 class Box:
     def __init__(self, pos, wide, height, label):
