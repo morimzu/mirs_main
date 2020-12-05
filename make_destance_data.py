@@ -50,4 +50,4 @@ if __name__ == "__main__":
     df = pd.concat([df1, df2], axis=0)
     df = df.sort_values(by='dist', ascending=True)
     print(df)
-    df.to_csv("../data/ObjectDistanceDatas.csv", index=False)
+    df.to_csv("./data/ObjectDistanceDatas.csv", index=False)
