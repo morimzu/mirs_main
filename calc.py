@@ -12,5 +12,3 @@ def calc(width):
     for dist in x:
         if dist >= 30.0 and dist <= 100.0 and dist.imag == 0:
             return dist.real
-
-#print(calc(76.67501068115234))
