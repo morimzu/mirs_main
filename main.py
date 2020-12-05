@@ -17,8 +17,11 @@ if __name__ == "__main__":
     img = get_image()
     image = cv2.imread(img, cv2.IMREAD_COLOR)
     
+    '''
+    デバッグ部分．一回の物体検知にどれだけの時間がかかったのかを計測するのに使った．
     result = timeit.timeit('detect(image, count)', globals=globals(), number=10)
     print(result / 10)
+    '''
 
     labels, boxs = detect(image, count)
     print(count)
