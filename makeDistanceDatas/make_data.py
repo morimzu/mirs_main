@@ -35,4 +35,4 @@ if __name__ == "__main__":
     df = pd.DataFrame(objects,
     columns=['dist', 'x_pos', 'y_pos', 'width', 'height'])
 
-    df.to_csv("ObjectDistanceDatas.csv")
+    df.to_csv("../data/ObjectDistanceDatas.csv")
