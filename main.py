@@ -5,6 +5,7 @@ from ssd_model import detect
 from arduino import My_Serial
 from order import Order
 
+import timeit
 
 if __name__ == "__main__":
     '''
@@ -14,7 +15,11 @@ if __name__ == "__main__":
     
     count = 1
     img = get_image()
-    image = cv2.imread(img, cv2.IMREAD_COLOR)          
+    image = cv2.imread(img, cv2.IMREAD_COLOR)
+    
+    result = timeit.timeit('detect(image, count)', globals=globals(), number=10)
+    print(result / 10)
+
     labels, boxs = detect(image, count)
     print(count)
     count += 1
