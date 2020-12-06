@@ -10,13 +10,13 @@ def calc_dist(width):
     #print(x)
     for dist in x:
         if dist >= 30.0 and dist <= 100.0 and dist.imag == 0:
-            print(dist.real)
+            #print(dist.real)
             return dist.real
     raise Exception("The distance is out of range.")
 
 def calc_devi(devi):
     y = np.roots([fact[0][0]/27.5, fact[0][1]/27.5, fact[0][2]/27.5, (fact[0][3]-devi)/27.5])
-    #print(y)
+    print(y)
     for devi in y:
         if devi >=-100 and devi <= 100 and devi.imag == 0:
             return devi.real
