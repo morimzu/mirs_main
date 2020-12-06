@@ -7,12 +7,12 @@ fact = df.values.tolist()
 
 def calc_dist(width):
     x = np.roots([fact[0][0], fact[0][1], fact[0][2], fact[0][3]-width])
-    print(x)
+    #print(x)
     for dist in x:
         if dist >= 30.0 and dist <= 100.0 and dist.imag == 0:
+            print(dist.real)
             return dist.real
-        else:
-            raise Exception("The distance is out of range.")
+    raise Exception("The distance is out of range.")
 
 def calc_devi(devi):
     y = np.roots([fact[0][0]/27.5, fact[0][1]/27.5, fact[0][2]/27.5, fact[0][3]/27.5-devi])
@@ -20,5 +20,4 @@ def calc_devi(devi):
     for devi in y:
         if devi >=0 and devi <= 100 and devi.imag == 0:
             return devi.real
-        else:
-            raise Exception("The deviation is out of range.")
+    raise Exception("The deviation is out of range.")
