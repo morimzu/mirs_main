@@ -18,7 +18,7 @@ if __name__ == "__main__":
     img = get_image()
     image = cv2.imread(img, cv2.IMREAD_COLOR)
     IMAGE_WIDTH = image.shape[0]
-
+    print(IMAGE_WIDTH)
     '''
     デバッグ部分．一回の物体検知にどれだけの時間がかかったのかを計測するのに使った．
     result = timeit.timeit('detect(image, count)', globals=globals(), number=10)
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     print(count)
     count += 1
     labels.append(':')
-    print(labels)
+    #print(labels)
     for box in boxs:
         box.show()
         print(calc_dist(box.width))
