@@ -45,7 +45,7 @@ if __name__ == "__main__":
             y_pos += [box.y_pos]
             width += [box.width]
             height += [box.height]
-            devi += [box.x_pos - image.shape[0]]
+            devi += [box.x_pos - image.shape[0]/2]
             count += 1
             print(image.shape[0])
         if i % 5 == 0 and i is not 0:
