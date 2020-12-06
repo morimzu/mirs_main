@@ -19,5 +19,5 @@ def calc_devi(devi):
     #print(y)
     for devi in y:
         if devi >=-100 and devi <= 100 and devi.imag == 0:
-            return devi.real/27.5
+            return devi.real
     raise Exception("The deviation is out of range.")
