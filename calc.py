@@ -14,16 +14,15 @@ def calc_dist(width):
             return dist.real
     raise Exception("The distance is out of range.")
 
-def calc_devi(devi):
+def calc_devi(width, devi):
     if devi <0:
         devi =-devi
         sign = 1
     else: sign = 0
-    y = np.roots([fact[0][0]/27.5, fact[0][1]/27.5, fact[0][2]/27.5, fact[0][3]/27.5-devi])
-    print(y)
-    for devi in y:
-        if devi >=-100 and devi <= 100 and devi.imag == 0:
-            if sign == 1:
-                devi = -devi
-            return devi.real
+    t = width/27.5  # 机との距離において1cmが何ピクセルなのかを求める
+    devi = devi/t
+    if devi >=-100 and devi <= 100 and devi.imag == 0:
+        if sign == 1:
+            devi = -devi
+        return devi.real
     raise Exception("The deviation is out of range.")
