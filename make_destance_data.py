@@ -37,11 +37,11 @@ if __name__ == "__main__":
         print("If you are ready press any keys and Enter.")
 
         input()
-    dist = 1
+    distance = 1
     for i, image in enumerate(images):
         labels, boxs = detect(image, count)
         for box in boxs:
-            dist += [dist*10]
+            dist += [distance*10]
             x_pos += [box.x_pos]
             y_pos += [box.y_pos]
             width += [box.width]
@@ -49,7 +49,7 @@ if __name__ == "__main__":
             devi += [box.x_pos - image.shape[0]]
             count += 1
         if i % 5 == 0:
-            count += 1
+            distance += 1
     df2 = pd.DataFrame(
         data={'dist':dist, 'x_pos':x_pos, 'y_pos':y_pos, 'width':width, 'height':height},
         columns=['dist', 'x_pos', 'y_pos', 'width', 'height']
