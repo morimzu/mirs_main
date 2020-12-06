@@ -27,8 +27,7 @@ if __name__ == "__main__":
         for j in range(5):
             img = get_image()
             #img = './VOCdevkit/DESK/JPEGImages/deskImage_' + ("0000" + str(randint(0,425)))[-5:] + ".jpg" テスト用，既存のファイルかrあランダムにデータを引っ張ってきてどうっしているのか確認した．
-            for i in range(5):
-                images.append(cv2.imread(img, cv2.IMREAD_COLOR))
+            images.append(cv2.imread(img, cv2.IMREAD_COLOR))
                 
         print("Data collection has already been completed for a distance of {}cm".format((i+1)*10))
         if i is not 10:
@@ -51,8 +50,8 @@ if __name__ == "__main__":
         if i % 5 == 0:
             distance += 1
     df2 = pd.DataFrame(
-        data={'dist':dist, 'x_pos':x_pos, 'y_pos':y_pos, 'width':width, 'height':height},
-        columns=['dist', 'x_pos', 'y_pos', 'width', 'height']
+        data={'dist':dist, 'x_pos':x_pos, 'y_pos':y_pos, 'width':width, 'height':height, 'devi':devi},
+        columns=['dist', 'x_pos', 'y_pos', 'width', 'height', 'devi']
     )
     
     df = pd.concat([df1, df2], axis=0)
