@@ -33,6 +33,7 @@ if __name__ == "__main__":
     for box in boxs:
         box.show()
         print(calc_dist(box.width))
+        print(box.x_pos)
         print(box.x_pos-IMAGE_WIDTH/2)
         print(calc_devi(box.x_pos-IMAGE_WIDTH/2))
 
