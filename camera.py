@@ -8,8 +8,7 @@ def get_image():
 
     cam = cv2.VideoCapture(0)
     if cam == None:
-        return False
-
+        raise Exception("Camera is unknown")
 
     # カメラから映像を読み込む
     _, img = cam.read()
