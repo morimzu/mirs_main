@@ -35,8 +35,8 @@ if __name__ == "__main__":
         dist = calc_dist(box.width)
         print("distance: ", dist)
         print("x_pos: ", box.x_pos)
-        print("x_pos - imageWidth: ", box.x_pos-IMAGE_WIDTH/2)
-        print("deviation: ", calc_devi(box.width, box.x_pos-IMAGE_WIDTH/2))
+        print("x_pos - imageWidth: ", box.x_pos + box.width / 2 - IMAGE_WIDTH/2)
+        print("deviation: ", calc_devi(box.width, box.x_pos + box.width / 2 - IMAGE_WIDTH/2))
 
     #ser.send('a0a0a0a0:')
     #ser.send(order.order)
