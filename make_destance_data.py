@@ -47,7 +47,7 @@ if __name__ == "__main__":
             height += [box.height]
             devi += [box.x_pos - image.shape[0]]
             count += 1
-        if i % 5 == 0:
+        if i % 5 == 0 and i is not 0:
             distance += 1
     df2 = pd.DataFrame(
         data={'dist':dist, 'x_pos':x_pos, 'y_pos':y_pos, 'width':width, 'height':height, 'devi':devi},
