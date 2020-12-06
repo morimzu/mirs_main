@@ -32,10 +32,10 @@ if __name__ == "__main__":
     #print(labels)
     for box in boxs:
         box.show()
-        #print(calc_dist(box.width))
+        print(calc_dist(box.width))
         #print(box.x_pos)
         #print(box.x_pos-IMAGE_WIDTH/2)
-        #print(calc_devi(box.x_pos-IMAGE_WIDTH/2))
+        print(calc_devi(box.x_pos-IMAGE_WIDTH/2))
 
     #ser.send('a0a0a0a0:')
     #ser.send(order.order)
