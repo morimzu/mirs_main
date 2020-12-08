@@ -9,8 +9,8 @@ from random import randint
 import os
 
 if __name__ == "__main__":
-    if os.path.isfile("ObjectDistanceDatas.csv"):
-        df1 = pd.read_csv("ObjectDistanceDatas.csv")
+    if os.path.isfile("./data/ObjectDistanceDatas.csv"):
+        df1 = pd.read_csv("./data/ObjectDistanceDatas.csv")
     else:
         print("I'll make ObjectDistanceDatas.csv file")
         df1 = pd.DataFrame([], columns=['dist', 'x_pos', 'y_pos', 'width', 'height'])
