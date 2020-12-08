@@ -3,8 +3,13 @@
 from camera_test import get_image
 import time
 
+
 if __name__ == "__main__":
-    for i in range(100):
-        count = ('0000' + str(i))[-5:]
-        get_image(count)
-        time.sleep(0.1)
+    t = 0
+    for j in range(15):
+        for i in range(10):
+            t = j * 10 + i
+            count = ('0000' + str(t))[-5:]
+            get_image(count)
+        input("next session: ")
+        
