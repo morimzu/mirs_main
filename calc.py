@@ -6,12 +6,12 @@ df = pd.read_csv("data/Determination_factors.csv")
 fact = df.values.tolist()
 
 def calc_dist(width):
-    x = np.roots([fact[0][0], fact[0][1], fact[0][2]-width])
-    print(x)
+    x = np.roots([fact[0][0], fact[0][1], fact[0][2], fact[0][3]-width])
+    #print(x)
     for dist in x:
-        if dist >= 30.0 and dist <= 100.0:
+        if dist >= 30.0 and dist <= 100.0 and dist.imag == 0:
             #print(dist.real)
-            return dist
+            return dist.real
     raise Exception("The distance is out of range.")
 
 def calc_devi(width, devi):
@@ -21,8 +21,8 @@ def calc_devi(width, devi):
     else: sign = 0
     t = width/27.5  # 机との距離において1cmが何ピクセルなのかを求める
     devi = devi/t
-    if devi >=-100 and devi <= 100:
+    if devi >=-100 and devi <= 100 and devi.imag == 0:
         if sign == 1:
             devi = -devi
-        return devi
+        return devi.real
     raise Exception("The deviation is out of range.")
