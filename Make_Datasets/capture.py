@@ -11,5 +11,6 @@ if __name__ == "__main__":
             t = j * 10 + i
             count = ('0000' + str(t))[-5:]
             get_image(count)
+        print(t)
         input("next session: ")
         
