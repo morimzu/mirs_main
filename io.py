@@ -1,12 +1,12 @@
 import time
-import RPi.GPIO as GPIO
-import numpy as np
+import smbus
 
-i2c_addredd = 72
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
+#SMBusの引数に1を指定する。Raspberry Piのi2cバスの番号
+i2c = smbus.SMBus(1)
+#デバイスのアドレス 0x68
+addr = 0x68
 
 if __name__ == "__main__":
     while True:
-        GPIO.setup(i2c_addredd, GPIO.IN)
-        print(GPIO.input(i2c_addredd))
+        data = i2c.read_byte_data(addr, 0x72)
+        print(data)
