@@ -17,7 +17,7 @@ def get_image(count):
 
     # 保存先を設定
     shoot_time = datetime.now()
-    image_file = "./deskImages/" + 'deskImages_' + str(count) +'.jpg'
+    image_file = "./deskImages/" + 'deskImage_' + str(count) +'.jpg'
 
     # 画像ファイルとして書き出す
     cv2.imwrite(image_file, img)
