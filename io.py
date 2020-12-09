@@ -2,7 +2,7 @@ import time
 import RPi.GPIO as GPIO
 import numpy as np
 
-i2c_addredd = '0x72'
+i2c_addredd = 72
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
