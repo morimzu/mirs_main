@@ -3,7 +3,6 @@ import RPi.GPIO as GPIO
 import numpy as np
 
 i2c_addredd = 0x72
-GPIO.setup()
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
