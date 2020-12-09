@@ -1,5 +1,5 @@
 import time
-from RPI import GPIO
+import RPi.GPIO as GPIO
 import numpy as np
 
 i2c_addredd = 0x72
