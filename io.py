@@ -8,5 +8,6 @@ addr = 0x72
 
 if __name__ == "__main__":
     while True:
-        data = i2c.read_byte_data(addr, 0x05)
+        data = i2c.read_byte_data(addr, 0x72)
         print(data)
+        time.sleep(1.0)
