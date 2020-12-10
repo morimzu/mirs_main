@@ -23,7 +23,7 @@ if __name__ == "__main__":
     height = []
     devi = []
     images = []
-    for i in range(10):
+    for i in range(20):
         for j in range(5):
             img = get_image()
             #img = './VOCdevkit/DESK/JPEGImages/deskImage_' + ("0000" + str(randint(0,425)))[-5:] + ".jpg" テスト用，既存のファイルかrあランダムにデータを引っ張ってきてどうっしているのか確認した．
