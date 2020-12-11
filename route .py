@@ -10,6 +10,8 @@ ma2=200
 #回転する時に必要な幅
 
 import math
+from main import VELOCITY, VELOCITY_DEG
+from pprint import pprint
 
 def make_route(dist, dif):
     Negative = 0
@@ -27,7 +29,9 @@ def make_route(dist, dif):
         angle_rotate *= -1
 
     #print(Tst)  #直線距離（機体幅と回転の時に必要な幅を削った時の残りの距離)
-    print(dist_run)   #斜めに進む分の距離
+    #print(dist_run)   #斜めに進む分の距離
     #print(angle_direction)  #進みたい方向の角度
-    print(angle_rotate) #機体を移転させる角度 実際に回転させる角度 [deg]
-    return dist_run, angle_rotate
+    #print(angle_rotate) #機体を移転させる角度 実際に回転させる角度 [deg]
+    orders = ['r', VELOCITY, ma]['t', VELOCITY_DEG, angle_rotate]['r', VELOCITY, dist_run]['t', VELOCITY_DEG, -1*angle_rotate]['r', VELOCITY, ma2]
+    pprint(orders)
+    return orders
