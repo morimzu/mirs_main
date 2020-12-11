@@ -34,6 +34,6 @@ def make_route(dist, dif):
     #print(dist_run)   #斜めに進む分の距離
     #print(angle_direction)  #進みたい方向の角度
     #print(angle_rotate) #機体を移転させる角度 実際に回転させる角度 [deg]
-    orders = ['r', VELOCITY, ma]['t', VELOCITY_DEG, angle_rotate]['r', VELOCITY, dist_run]['t', VELOCITY_DEG, -1*angle_rotate]['r', VELOCITY, ma2]
+    orders = [['r', VELOCITY, ma]['t', VELOCITY_DEG, angle_rotate]['r', VELOCITY, dist_run]['t', VELOCITY_DEG, -1*angle_rotate]['r', VELOCITY, ma2]]
     pprint(orders)
     return orders
