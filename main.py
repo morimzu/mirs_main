@@ -5,6 +5,7 @@ from ssd_model import detect
 from arduino import My_Serial
 from order import Order
 from calc import *
+from route import make_route
 
 import timeit
 
@@ -33,10 +34,12 @@ if __name__ == "__main__":
     for box in boxs:
         box.show()
         dist = calc_dist(box.width)
+        devi = calc_devi(box.width, box.x_pos + box.width / 2 - IMAGE_WIDTH/2)
         print("distance: ", dist)
         print("x_pos: ", box.x_pos)
         print("x_pos - imageWidth: ", box.x_pos + box.width / 2 - IMAGE_WIDTH/2)
         print("deviation: ", calc_devi(box.width, box.x_pos + box.width / 2 - IMAGE_WIDTH/2))
+        dist_run, angle_routate = make_route(dist, devi)
 
     #ser.send('a0a0a0a0:')
     #ser.send(order.order)
