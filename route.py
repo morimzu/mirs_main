@@ -10,8 +10,10 @@ ma2=200
 #回転する時に必要な幅
 
 import math
-from main import VELOCITY, VELOCITY_DEG
 from pprint import pprint
+
+VELOCITY = 1.5
+VELOCITY_DEG = 0.5
 
 def make_route(dist, dif):
     Negative = 0

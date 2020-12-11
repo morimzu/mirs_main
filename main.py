@@ -2,10 +2,10 @@ import cv2
 
 from camera import get_image
 from ssd_model import detect
+from route import make_route
 from arduino import My_Serial
 from order import Order
 from calc import *
-from route import make_route
 
 import timeit
 
