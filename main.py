@@ -11,7 +11,7 @@ import timeit
 
 VELOCITY = 1.5
 VELOCITY_DEG = 0.5
-DISTANCE = 170
+DISTANCE = 150
 orders = []
 
 if __name__ == "__main__":
@@ -48,7 +48,6 @@ if __name__ == "__main__":
             print("devi: ", devi)
             if dist >= DISTANCE-20 and dist <= DISTANCE+20: #机との距離が規定の値の範囲内にあるかどうか
                 orders = make_route(dist, devi)
-            else: continue  #  規定の範囲内に机がなければ命令文は追加せず次のループに移る
 
         for order in orders:
             ser.send(Order(order))
