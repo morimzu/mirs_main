@@ -12,7 +12,6 @@ import timeit
 VELOCITY = 1.5
 VELOCITY_DEG = 0.5
 DISTANCE = 150
-orders = []
 
 if __name__ == "__main__":
     '''
