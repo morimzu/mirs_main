@@ -18,7 +18,8 @@ if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = My_Serial('/dev/tty.usbmodem142401', 115200)
+    ser = My_Serial('/dev/ttyACM0', 115200)
+    #ser = My_Serial('/dev/tty.usbmodem142401', 115200)
     
     while True:
         count = 1
