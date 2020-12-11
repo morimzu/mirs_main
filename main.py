@@ -50,6 +50,6 @@ if __name__ == "__main__":
                 orders = make_route(dist, devi)
 
         for order in orders:
-            ser.send(Order(order))
+            ser.send(order)
 
     ser.checkout()
