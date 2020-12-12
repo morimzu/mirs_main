@@ -13,7 +13,7 @@ import math
 from pprint import pprint
 from order import Order
 
-VELOCITY = 1.5
+VELOCITY = 15
 VELOCITY_DEG = 0.5
 
 def make_route(dist, dif):
