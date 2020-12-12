@@ -19,7 +19,7 @@ if __name__ == "__main__":
     初期設定
     '''
     #ser = My_Serial('/dev/ttyACM0', 115200)
-    ser = My_Serial('/dev/tty.usbmodem141201', 115200)
+    #ser = My_Serial('/dev/tty.usbmodem141201', 115200)
     
     while True:
         count = 1
@@ -48,8 +48,8 @@ if __name__ == "__main__":
             print("devi: ", devi)
             if dist >= DISTANCE-20 and dist <= DISTANCE+20: #机との距離が規定の値の範囲内にあるかどうか
                 orders = make_route(dist, devi)
-
+        '''
         for order in orders:
             ser.send(order)
-
+        '''
     ser.checkout()
