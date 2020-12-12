@@ -15,14 +15,13 @@ def calc_dist(width):
     raise Exception("The distance is out of range.")
 
 def calc_devi(width, devi):
-    if devi <0:
+    sign = 1
+    if devi <0: # ズレのピクセルの符号処理
         devi =-devi
-        sign = 1
-    else: sign = 0
+        sign = -1
     t = width/27.5  # 机との距離において1cmが何ピクセルなのかを求める
     devi = devi/t
     if devi >=-100 and devi <= 100 and devi.imag == 0:
-        if sign == 1:
-            devi = -devi
+        devi = sign * devi
         return devi.real
     raise Exception("The deviation is out of range.")

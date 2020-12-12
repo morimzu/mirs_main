@@ -35,6 +35,7 @@ if __name__ == "__main__":
 
         labels, boxs = detect(image, count)
         if labels == False: #机が見つからなかったときは以下の処理をスルーしてもう検知されるまで物体検知を繰り返す（変更予定）
+            print("desk was not found.")
             continue
 
         count += 1
@@ -43,7 +44,7 @@ if __name__ == "__main__":
         for box in boxs:
             #box.show()
             dist = calc_dist(box.width)                                             #机との距離の計算
-            devi = calc_devi(box.width, box.x_pos + box.width / 2 - IMAGE_WIDTH/2)  #机のズレの計算
+            devi = calc_devi(box.width, box.x_pos - box.width / 2 - IMAGE_WIDTH/2)  #机のズレの計算
             print("dist: ", dist)
             print("devi: ", devi)
             if dist >= DISTANCE-20 and dist <= DISTANCE+20: #机との距離が規定の値の範囲内にあるかどうか
