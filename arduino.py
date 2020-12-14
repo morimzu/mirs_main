@@ -1,9 +1,5 @@
 import serial
 
-'''
-#ser = serial.Serial('/dev/ttyACM0', 9600)
-'''
-
 class My_Serial(serial.Serial):
     def send(self, msgs):
         for msg in msgs:
