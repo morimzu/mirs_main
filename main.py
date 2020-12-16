@@ -11,15 +11,15 @@ import timeit
 
 VELOCITY = 15
 VELOCITY_DEG = 0.5
-DISTANCE = 150
+DISTANCE = 100
 orders = []
 
 if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = My_Serial('/dev/ttyACM0', 115200)
-    #ser = My_Serial('/dev/tty.usbmodem141201', 115200)
+    #ser = My_Serial('/dev/ttyACM0', 115200, timeout=50)
+    ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=50)
     
     while True:
         count = 1

@@ -9,8 +9,8 @@ from random import randint
 import os
 
 if __name__ == "__main__":
-    if os.path.isfile("./data/ObjectDistanceDatas.csv"):
-        df1 = pd.read_csv("./data/ObjectDistanceDatas.csv")
+    if os.path.isfile("./data/ObjectDistanceDatas_pc.csv"):
+        df1 = pd.read_csv("./data/ObjectDistanceDatas_pc.csv")
     else:
         print("I'll make ObjectDistanceDatas.csv file")
         df1 = pd.DataFrame([], columns=['dist', 'x_pos', 'y_pos', 'width', 'height'])
@@ -58,4 +58,4 @@ if __name__ == "__main__":
     df = pd.concat([df1, df2], axis=0)
     df = df.sort_values(by='dist', ascending=True)
     print(df)
-    df.to_csv("./data/ObjectDistanceDatas.csv", index=False)
+    df.to_csv("./data/ObjectDistanceDatas_pc.csv", index=False)

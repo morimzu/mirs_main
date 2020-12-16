@@ -124,7 +124,7 @@ class SSD(nn.Module):
             # PyTorch1.5.0 support new-style autograd function
                 loc.view(loc.size(0), -1, 4),                   # loc preds
                 self.softmax(conf.view(conf.size(0), -1,
-                             self.num_classes)),                # conf preds
+                            self.num_classes)),                # conf preds
                 self.priors.type(type(x.data))                  # default boxes
             )
         else:
@@ -141,7 +141,7 @@ class SSD(nn.Module):
         if ext == '.pkl' or '.pth':
             print('Loading weights into state dict...')
             self.load_state_dict(torch.load(base_file,
-                                 map_location=lambda storage, loc: storage))
+                                map_location=lambda storage, loc: storage))
             print('Finished!')
         else:
             print('Sorry only .pth and .pkl files supported.')
@@ -171,7 +171,7 @@ def vgg(cfg, i, batch_norm=False):
     conv6 = nn.Conv2d(512, 1024, kernel_size=3, padding=6, dilation=6)
     conv7 = nn.Conv2d(1024, 1024, kernel_size=1)
     layers += [pool5, conv6,
-               nn.ReLU(inplace=True), conv7, nn.ReLU(inplace=True)]
+                nn.ReLU(inplace=True), conv7, nn.ReLU(inplace=True)]
     return layers
 
 
@@ -186,7 +186,7 @@ def add_extras(cfg, i, batch_norm=False):
             if v == 'S':
                 # strideが2
                 layers += [nn.Conv2d(in_channels, cfg[k + 1],
-                           kernel_size=(1, 3)[flag], stride=2, padding=1)]
+                            kernel_size=(1, 3)[flag], stride=2, padding=1)]
             else:
                 layers += [nn.Conv2d(in_channels, v, kernel_size=(1, 3)[flag])]
             flag = not flag
@@ -239,10 +239,10 @@ def build_ssd(phase, size=300, num_classes=21):
         return
     if size != 300:
         print("ERROR: You specified size " + repr(size) + ". However, " +
-              "currently only SSD300 (size=300) is supported!")
+                "currently only SSD300 (size=300) is supported!")
         return
     # ベース、追加、オフセット、確信度のネットワークリストはクラスSSDの引数
     base_, extras_, head_ = multibox(vgg(base[str(size)], 3),
-                                     add_extras(extras[str(size)], 1024),
-                                     mbox[str(size)], num_classes)
+                                        add_extras(extras[str(size)], 1024),
+                                        mbox[str(size)], num_classes)
     return SSD(phase, size, base_, extras_, head_, num_classes)
