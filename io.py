@@ -2,7 +2,7 @@ import time
 import smbus
 
 i2c = smbus.SMBus(1)
-address = 0x72
+address = 0x71
 SLEEPTIME = 0.5
 DELAY = 0.1
 
