@@ -55,7 +55,7 @@ if __name__ == "__main__":
         for order in orders:
             for msg in order:
                 print("sent message: ", msg)
-                ser.write(msg)
+                ser.write(str.encode(msg))
 
 
     ser.checkout()
