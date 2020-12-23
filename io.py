@@ -1,5 +1,5 @@
 import time
-import smbus
+import smbus 
 
 i2c = smbus.SMBus(1)
 address = 0x72

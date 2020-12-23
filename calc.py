@@ -12,7 +12,7 @@ def calc_dist(width):
         if dist >= 50.0 and dist <= 200.0 and dist.imag == 0:
             #print(dist.real)
             return dist.real
-    raise Exception("The distance is out of range.")
+    return 0
 
 def calc_devi(width, devi):
     sign = 1
@@ -24,4 +24,4 @@ def calc_devi(width, devi):
     if devi >=-100 and devi <= 100 and devi.imag == 0:
         devi = sign * devi
         return devi.real
-    raise Exception("The deviation is out of range.")
+    return 0
