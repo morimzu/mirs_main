@@ -1,15 +1,7 @@
 import serial
 import time
+from arduino import My_Serial
 
-ser = serial.Serial('/dev/ttyACM0', 9600)
-
-for i in range(10):
-        ser.write(str.encode('a'))
-        print("LED ON")
-        time.sleep(2)
-        ser.write(str.encode('0'))
-        print("LED OFF")
-        time.sleep(2)
-
-ser.close()
-print("bbb")
+if __name__ == "__main__":
+        ser = My_Serial('/dev/ttyACM0', 115200, timeout=50)
+        ser.send('r;15;20.0:')
