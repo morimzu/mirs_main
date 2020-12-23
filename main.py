@@ -13,12 +13,13 @@ VELOCITY = 15
 VELOCITY_DEG = 0.5
 DISTANCE = 100
 orders = []
+import serial
 
 if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = My_Serial('/dev/ttyACM0', 115200, timeout=50)
+    ser = serial.Serial('/dev/ttyACM0', 115200, timeout=50)
     #ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=50)
     
     while True:
@@ -52,6 +53,9 @@ if __name__ == "__main__":
                 orders = make_route(dist, devi)
 
         for order in orders:
-            ser.send(order)
+            for msg in order:
+                print("sent message: ", msg)
+                ser.write(msg)
+
 
     ser.checkout()
