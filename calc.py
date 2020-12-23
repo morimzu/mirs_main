@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv("data/Determination_factors_pc.csv")
+df = pd.read_csv("data/Determination_factors.csv")
 fact = df.values.tolist()
 
 def calc_dist(width):
