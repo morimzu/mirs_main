@@ -2,11 +2,12 @@ import serial
 
 class My_Serial(serial.Serial):
     def send(self, msgs):
+        print("<Arduino module>")
         for msg in msgs:
             self.write(str.encode(msg))
             print("sent Order: ", msg)
         
-        self.check_response()
+        #self.check_response()
         
     def check_response(self):
         print("Now waiting a response from the Arduino.")

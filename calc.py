@@ -6,6 +6,7 @@ df = pd.read_csv("data/Determination_factors.csv")
 fact = df.values.tolist()
 
 def calc_dist(width):
+    print("<calc module>")
     x = np.roots([fact[0][0], fact[0][1], fact[0][2], fact[0][3], fact[0][4]-width])
     #print(x)
     for dist in x:
