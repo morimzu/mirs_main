@@ -17,7 +17,7 @@ void setup() {
   motor_open();
   raspi_open();
   led_open();
-  Serial.begin(115200);
+  Serial.begin(57600);
 }
 
 void loop() {
