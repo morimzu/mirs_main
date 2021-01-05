@@ -6,6 +6,7 @@ from route import make_route
 from arduino import My_Serial
 from order import Order
 from calc import *
+import time
 
 import timeit
 
@@ -50,6 +51,9 @@ if __name__ == "__main__":
             print("devi: ", devi)
             if dist >= DISTANCE-20 and dist <= DISTANCE+20: #机との距離が規定の値の範囲内にあるかどうか
                 orders = make_route(dist, devi)
+        
+        print("sleep 2 seconds.")
+        time.sleep(2)
 
         for order in orders:
             for msg in order:
