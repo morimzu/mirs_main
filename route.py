@@ -14,7 +14,7 @@ from pprint import pprint
 from order import Order
 
 VELOCITY = 15
-VELOCITY_DEG = 0.5
+VELOCITY_DEG = 15
 
 def make_route(dist, dif):
     orders = []
@@ -23,7 +23,7 @@ def make_route(dist, dif):
         dif *= -1
         Negative = 1
     
-    Tst=dist-(ma+ma2+st)
+    Tst=dist-40-st
     dist_run = math.sqrt( dif **2 + Tst**2)
     a=Tst/dif
     angle_direction=math.degrees(math.atan(a))

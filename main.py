@@ -59,4 +59,4 @@ if __name__ == "__main__":
         for order in orders:
             for msg in order:
                 print("sent message: ", msg)
-                ser.write(msg.encode())
+                ser.write(msg.encode('utf-8'))
