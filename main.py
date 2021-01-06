@@ -20,7 +20,7 @@ if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = serial.Serial('/dev/ttyACM0', 57600, timeout=50)
+    ser = serial.Serial('/dev/ttyACM0', 115200, timeout=50)
     
     #ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=50)
     
