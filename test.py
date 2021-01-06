@@ -3,5 +3,5 @@ import time
 from arduino import My_Serial
 
 if __name__ == "__main__":
-        ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=50)
+        ser = My_Serial('/dev/ttyACM0', 115200, timeout=50)
         ser.send('r;15;20.0:')
