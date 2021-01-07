@@ -52,11 +52,6 @@ if __name__ == "__main__":
             print("devi: ", devi)
             if dist >= DISTANCE-20 and dist <= DISTANCE+20: #机との距離が規定の値の範囲内にあるかどうか
                 orders = make_route(dist, devi)
-        
-        print("sleep 2 seconds.")
-        time.sleep(2)
 
         for order in orders:
-            for msg in order:
-                print("sent message: ", msg)
-                ser.write(msg.encode('utf-8'))
+            ser.write(order.encode('utf-8'))

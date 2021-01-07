@@ -36,8 +36,8 @@ void loop() {
 */
 
 void led_set(int times) {
-  colorWipe(strip.Color(0, 0, 255), times);     //LEDを青色で点灯
-  colorWipe(strip.Color(0, 0, 0, 255), times);  //消灯
+  colorWipe(strip.Color(0, 0, 255), 50);     //LEDを青色で点灯
+  colorWipe(strip.Color(0, 0, 0, 255), 50);  //消灯
 }
 
 
