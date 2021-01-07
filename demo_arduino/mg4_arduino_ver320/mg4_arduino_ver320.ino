@@ -21,27 +21,31 @@ void setup() {
 }
 
 void loop() {
-  test_run_ctrl(STR, 15, 20);
-  test_run_ctrl(ROT, 15, 10.077673241270588);
-  test_run_ctrl(STR, 15, 85.72257578957833);
-  test_run_ctrl(ROT, 15, -10.077673241270588);
-  test_run_ctrl(STR, 15, 20);
-  led_set(10);
+  if (Serial.available() > 0) {
+    val = Serial.read();
+  }
+  if (val == 'a') {
+    test_run_ctrl(STR, 15, 20);
+    test_run_ctrl(ROT, 15, 10.077673241270588);
+    test_run_ctrl(STR, 15, 85.72257578957833);
+    test_run_ctrl(ROT, 15, -10.077673241270588);
+    test_run_ctrl(STR, 15, 20);
+    led_set(10);
 
-  test_run_ctrl(STR, 15, 20);
-  test_run_ctrl(ROT, 15, -10.077673241270588);
-  test_run_ctrl(STR, 15, 85.72257578957833);
-  test_run_ctrl(ROT, 15, 10.077673241270588);
-  test_run_ctrl(STR, 15, 20);
-  led_set(10);
-  
-  test_run_ctrl(STR, 15, 20);
-  test_run_ctrl(ROT, 15, 10.077673241270588);
-  test_run_ctrl(STR, 15, 85.72257578957833);
-  test_run_ctrl(ROT, 15, -10.077673241270588);
-  test_run_ctrl(STR, 15, 20);
-  led_set(10);
+    test_run_ctrl(STR, 15, 20);
+    test_run_ctrl(ROT, 15, -10.077673241270588);
+    test_run_ctrl(STR, 15, 85.72257578957833);
+    test_run_ctrl(ROT, 15, 10.077673241270588);
+    test_run_ctrl(STR, 15, 20);
+    led_set(10);
 
+    test_run_ctrl(STR, 15, 20);
+    test_run_ctrl(ROT, 15, 10.077673241270588);
+    test_run_ctrl(STR, 15, 85.72257578957833);
+    test_run_ctrl(ROT, 15, -10.077673241270588);
+    test_run_ctrl(STR, 15, 20);
+    led_set(10);
+  }
   Serial.println("end");
   while (true) {
     delay(100);
