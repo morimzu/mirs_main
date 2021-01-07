@@ -6,6 +6,6 @@ if __name__ == "__main__":
 
         input()
         print("Program start!")
-        ser.write('a'.encode('utf-8'))
+        ser.write(str.encode('a'))
 
         ser.close()
