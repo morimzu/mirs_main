@@ -21,31 +21,30 @@ void setup() {
 }
 
 void loop() {
-  led_set(10000);
-  while (true) {
-    delay(100);
-  }
-  delay(30000);
+  led_set();
+  test_run_ctrl(STR, 15, 50);
+  //test_encoder();
+  delay(15000);
   test_run_ctrl(STR, 15, 20);
   test_run_ctrl(ROT, 15, 10.077673241270588);
   test_run_ctrl(STR, 15, 85.72257578957833);
   test_run_ctrl(ROT, 15, -10.077673241270588);
   test_run_ctrl(STR, 15, 20);
-  led_set(10000);
+  led_set();
 
   test_run_ctrl(STR, 15, 20);
   test_run_ctrl(ROT, 15, -10.077673241270588);
   test_run_ctrl(STR, 15, 85.72257578957833);
   test_run_ctrl(ROT, 15, 10.077673241270588);
   test_run_ctrl(STR, 15, 20);
-  led_set(10000);
+  led_set();
 
   test_run_ctrl(STR, 15, 20);
   test_run_ctrl(ROT, 15, 10.077673241270588);
   test_run_ctrl(STR, 15, 85.72257578957833);
   test_run_ctrl(ROT, 15, -10.077673241270588);
   test_run_ctrl(STR, 15, 20);
-  led_set(10000);
+  led_set();
 
   Serial.println("end");
   while (true) {

@@ -4,7 +4,6 @@
  */
 byte val= 0;
 char order[30];
-#define LED_PIN 13
 
 #include "define.h"
 #include<string.h>
@@ -17,7 +16,7 @@ void setup() {
   motor_open();
   raspi_open();
   led_open();
-  Serial.begin(57600);
+  Serial.begin(115200);
 }
 
 void loop() {
@@ -44,7 +43,7 @@ void loop() {
     //Serial.println(val);
 
     if(val == ';') {
-      Serial.println("session");
+      //Serial.println("session");
       Serial.println(session);
       session++;
       k=2;
@@ -90,7 +89,7 @@ void loop() {
         
       } else if(t == 40) {
         //LED制御の命令文がきたら
-        led_set(act1);
+        led_set();
         
       } else if(t == 50) {
         //回転の命令が来たら
@@ -121,6 +120,7 @@ void loop() {
         break;
         
       case 1:
+        Serial.println(k);
         //Serial.println(session);
         //Serial.println(encoder(val));
         if(encoder(val) == -1) {
@@ -132,6 +132,7 @@ void loop() {
           //Serial.println(sign * pow(10, (float)k - 1.0));
           act1 += sign * encoder(val) * pow(10, (float)k - 1.0);
           k = k-1;
+          Serial.println(k);
         }
         //Serial.println(act1);
         //Serial.println("act1");
@@ -159,7 +160,6 @@ void loop() {
         break;
     }
     
-    k--;
     i++;
   }
   

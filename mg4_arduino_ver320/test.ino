@@ -80,7 +80,7 @@ void test_run_ctrl(run_state_t state, double speed, double dist) {
       i = 0;
     }
     i++;
-    //if( state == STP ) break;
+    if( state == STP ) break;
     delay(T_CTRL);
   }
 }

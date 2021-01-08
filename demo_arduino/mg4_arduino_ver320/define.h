@@ -50,8 +50,8 @@ typedef struct {
 // 1/27 ギラ  26 and 103/121
 //#define GEAR_RATIO 27.851
 
-// 左タイヤに対する右タイヤの回転比
-#define L_R_RATIO  0.83
+// 右タイヤに対する左タイヤの回転比
+#define L_R_RATIO  0.87
 
 // バッテリ入力の分圧比
 #define V_RATIO 0.5 
