@@ -3,7 +3,7 @@ import time
 from arduino import My_Serial
 
 if __name__ == "__main__":
-        ser = My_Serial('/dev/tty.usbmodem141401', 115200)
+        ser = My_Serial('/dev/ttyACM0', 115200)
 
         input()
         print("Program start!")
