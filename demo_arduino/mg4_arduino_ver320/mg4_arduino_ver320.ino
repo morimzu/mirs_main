@@ -4,7 +4,6 @@
 */
 byte val = 0;
 char order[30];
-#define LED_PIN 13
 
 #include "define.h"
 #include<string.h>
@@ -21,6 +20,7 @@ void setup() {
 }
 
 void loop() {
+  /*
   led_set();
   test_run_ctrl(STR, 15, 50);
   //test_encoder();
@@ -50,5 +50,14 @@ void loop() {
   while (true) {
     delay(100);
   }
+  */
+ while (true) {
+    if (Serial.available() > 0) {
+      val = Serial.read();
+      //Serial.println(val);
+    }
+    if(val == 'a') test_run_ctrl(STR, 15, 20);
+ }
+  
 
 }

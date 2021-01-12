@@ -37,7 +37,7 @@ typedef struct {
 #define R_TIRE     4.387 
 
 // タイヤ間隔 [cm] 25.0
-#define D_TIRE    32.0
+#define D_TIRE    72.5
 
 // エンコーダ分解能 (A相立上り/立下りを利用するため2倍)
 #define ENC_RANGE (13*2) 

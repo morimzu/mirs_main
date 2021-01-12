@@ -14,6 +14,7 @@ VELOCITY = 15
 VELOCITY_DEG = 0.5
 DISTANCE = 100
 orders = []
+orders = []
 import serial
 
 if __name__ == "__main__":
