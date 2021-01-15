@@ -7,6 +7,7 @@ from arduino import My_Serial
 from order import Order
 from calc import *
 import time
+import numpy as np
 
 import timeit
 
@@ -21,7 +22,7 @@ if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = serial.Serial('/dev/ttyACM0', 115200, timeout=50)
+    ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=0.3)
     
     #ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=50)
     
@@ -51,8 +52,14 @@ if __name__ == "__main__":
             devi = calc_devi(box.width, box.x_pos + box.width / 2 - IMAGE_WIDTH/2)  #机のズレの計算
             print("dist: ", dist)
             print("devi: ", devi)
-            if dist >= DISTANCE-20 and dist <= DISTANCE+20: #机との距離が規定の値の範囲内にあるかどうか
-                orders = make_route(dist, devi)
-
-        for order in orders:
-            ser.write(order.encode('utf-8'))
+            if dist >= DISTANCE-50 and dist <= DISTANCE+50: #机との距離が規定の値の範囲内にあるかどうか
+                route = make_route(dist, devi)
+                for order, wait in route.orders:
+                    ser.send(order.encode())
+                    time.sleep(np.abs(wait))
+                ser.send('l:'.encode())
+                time.sleep(5)
+                del(route)
+            else:
+                continue
+        

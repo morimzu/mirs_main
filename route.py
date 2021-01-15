@@ -36,10 +36,20 @@ def make_route(dist, dif):
     #print(dist_run)   #斜めに進む分の距離
     #print(angle_direction)  #進みたい方向の角度
     #print(angle_rotate) #機体を移転させる角度 実際に回転させる角度 [deg]
-    orders.append(Order('r', VELOCITY, ma).order)
-    orders.append(Order('t', VELOCITY_DEG, angle_rotate).order)
-    orders.append(Order('r', VELOCITY, dist_run).order)
-    orders.append(Order('t', VELOCITY_DEG, -1*angle_rotate).order)
-    orders.append(Order('r', VELOCITY, ma2).order)
-    pprint(orders)
-    return orders
+    route = Route(ma, angle_rotate, dist_run)
+    return route
+
+class Route:
+    def __init__(self, ma, angle_rotate, dist_run):
+        self.ma = ma
+        self.angle_rotate = angle_rotate
+        self.dist_run = dist_run
+        self.orders = []
+        self.make_order()
+
+    def make_order(self):
+        self.orders.append([Order('r', VELOCITY, self.ma).order, self.ma/VELOCITY + 0.5])
+        self.orders.append([Order('t', VELOCITY_DEG, self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
+        self.orders.append([Order('r', VELOCITY, self.dist_run).order, self.dist_run/VELOCITY + 0.5])
+        self.orders.append([Order('t', VELOCITY_DEG, -1*self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
+        self.orders.append([Order('r', VELOCITY, self.ma).order, self.ma/VELOCITY + 0.5])

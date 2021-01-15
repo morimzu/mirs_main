@@ -8,7 +8,7 @@ char order[30];
 #include "define.h"
 #include<string.h>
 
-int encoder(char number);
+int btoi(char number);
 
 void setup() {
   io_open();
@@ -28,42 +28,28 @@ void loop() {
   int t = 0;  //制御対象の判断に用いる変数
   int sign = 1;   // 制御値の正負を決める
 
-  enum MOTOR {
-    M1, M2, L1, L2
-  };
-
   int session = 0;  //命令文の中のどの要素なのかを示す
-  // 0: 制御対象 1: 制御内容_L 2: 制御内容_R 3:
-
+  // 0: 制御対象,  1: 制御内容1,  2: 制御内容2
   while (true) {
     if (Serial.available() > 0) {
       val = Serial.read();
-      //Serial.println(val);
     }
-    if(val == 'a') continue; //aはデータなしを示す．断続的にデータが送信されてしまった場合に対応させている．
+    
+    if (val == 'a') continue; //aはデータなしを示す．断続的にデータが送信されてしまった場合に対応させている．
 
     if (val == ';') {
-      //Serial.println("session");
       Serial.println(session);
       session++;
       k = 2;
       continue;
     }
 
-    if (val == ':') { //命令の終わりの認識
+    else if (val == ':') { //命令の終わりの認識
       Serial.println("t");
 
       Serial.println(t);
       if (t == 20) {
         //走行制御の命令文がきたら
-        /*
-          Serial.print("act1: ");
-          Serial.println(act1);
-          Serial.print("act2: ");
-          Serial.println(act2);
-          Serial.print("times: ");
-          Serial.println(times);
-        */
         Serial.println(act1);
         Serial.println(act2);
         Serial.println("RUN");
@@ -75,6 +61,9 @@ void loop() {
 
       } else if (t == 40) {
         //回転の命令が来たら
+        Serial.println(act1);
+        Serial.println(act2);
+        Serial.println("TURN");
         test_run_ctrl(ROT, act1, act2);
       }
 
@@ -91,55 +80,43 @@ void loop() {
       session = 0;
       break;  //次の命令を読むためのループにうつる
     }
+    else {
+      order[i] = val;
 
-    order[i] = val;
+      switch (session) {
+        case 0: // 制御対象
+          //Serial.println(session);
+          //Serial.println(ebtoi(val));
+          t += btoi(val);
+          break;
 
-    switch (session) {
-      case 0: // 制御対象
-        //Serial.println(session);
-        Serial.println(encoder(val));
-        t += encoder(val);
-        break;
+        case 1:
+          if (btoi(val) == -1) {
+            sign = -1;
+          } else if (val == '.') {
+            delay(0);
+          } else {
+            act1 += sign * btoi(val) * pow(10, (float)k - 1.0);
+            k = k - 1;
+          }
+          break;
 
-      case 1:
-        Serial.println(k);
-        //Serial.println(session);
-        //Serial.println(encoder(val));
-        if (encoder(val) == -1) {
-          sign = -1;
-        } else if (val == '.') {
-          delay(0);
-        } else {
-          //Serial.println(encoder(val));
-          //Serial.println(sign * pow(10, (float)k - 1.0));
-          act1 += sign * encoder(val) * pow(10, (float)k - 1.0);
-          k = k - 1;
-          Serial.println(k);
-        }
-        //Serial.println(act1);
-        //Serial.println("act1");
-        break;
+        case 2:
+          if (btoi(val) == -1) {
+            sign = -1;
+          } else if (val == '.') {
+            delay(0);
+          } else {
+            act2 += sign * btoi(val) * pow(10, (float)k - 1.0);
+            k = k - 1;
+          }
+          break;
 
-      case 2:
-        //Serial.println(session);
-        if (encoder(val) == -1) {
-          sign = -1;
-        } else if (val == '.') {
-          delay(0);
-        } else {
-          //Serial.println(encoder(val));
-          //Serial.println(sign * pow(10, (float)k - 1.0));
-          act2 += sign * encoder(val) * pow(10, (float)k - 1.0);
-          k = k - 1;
-        }
-        //Serial.println(act2);
-        //Serial.println("act2");
-        break;
-
-      default:
-        Serial.println("NG: selected session is unknown.");
-        Serial.println(session);
-        break;
+        default:
+          Serial.println("NG: selected session is unknown.");
+          Serial.println(session);
+          break;
+      }
     }
 
     i++;
@@ -148,7 +125,7 @@ void loop() {
 
 }
 
-int encoder(char number) { //複数桁の数値をint型に直す
+int btoi(char number) { //複数桁の数値をint型に直す
   switch (number) {
     case '-': return -1; break;
     case '0': return 0; break;
@@ -164,7 +141,5 @@ int encoder(char number) { //複数桁の数値をint型に直す
     case 'r': return 20; break;
     case 'l': return 30; break;
     case 't': return 40; break;
-    case 'a': return 70; break;
-    default: return 0; break;
   }
 }

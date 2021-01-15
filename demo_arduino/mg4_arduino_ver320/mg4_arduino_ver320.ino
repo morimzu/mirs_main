@@ -19,12 +19,13 @@ void setup() {
   Serial.begin(115200);
 }
 
-void loop() {
+  void loop() {
   /*
   led_set();
   test_run_ctrl(STR, 15, 50);
   //test_encoder();
-  delay(15000);
+  */
+  delay(10000);
   test_run_ctrl(STR, 15, 20);
   test_run_ctrl(ROT, 15, 10.077673241270588);
   test_run_ctrl(STR, 15, 85.72257578957833);
@@ -50,14 +51,22 @@ void loop() {
   while (true) {
     delay(100);
   }
-  */
- while (true) {
+/*
+  while (true) {
     if (Serial.available() > 0) {
       val = Serial.read();
       //Serial.println(val);
     }
     if(val == 'a') test_run_ctrl(STR, 15, 20);
- }
-  
-
+  }
+  */
 }
+/*
+void loop() {
+  if (Serial.available() > 0) {
+    val = Serial.read();
+  }
+  if (val == 'a') motor_set(100, 100);
+  else if (val == '0') motor_set(0, 0);
+}
+*/

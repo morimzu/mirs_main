@@ -23,15 +23,14 @@ if __name__ == "__main__":
     height = []
     devi = []
     images = []
-    for i in range(20):
+    for i in range(10):
         for j in range(5):
             img = get_image()
-            #img = './VOCdevkit/DESK/JPEGImages/deskImage_' + ("0000" + str(randint(0,425)))[-5:] + ".jpg" テスト用，既存のファイルかrあランダムにデータを引っ張ってきてどうっしているのか確認した．
             images.append(cv2.imread(img, cv2.IMREAD_COLOR))
                 
-        print("Data collection has already been completed for a distance of {}cm".format((i+1)*10))
+        print("Data collection has already been completed for a distance of {}cm".format((i)*10+100))
         if i is not 10:
-            print("Next Distance is {}cm".format((i+1)*10+10))
+            print("Next Distance is {}cm".format((i)*10+10+100))
         
         print("If you are ready press any keys and Enter.")
 

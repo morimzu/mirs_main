@@ -1,7 +1,7 @@
 <annotation>
-	<folder>deskImages</folder>
+	<folder>JPEGImages</folder>
 	<filename>deskImages_00033.jpg</filename>
-	<path>/Users/mizuki/deskImages/deskImages_00033.jpg</path>
+	<path>/Users/mizuki/Document/学校関係/電子機械設計制作/mirs_main/VOCdevkit/DESK/JPEGImages/deskImages_00033.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
@@ -17,9 +17,9 @@
 		<truncated>1</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>49</xmin>
+			<xmin>58</xmin>
 			<ymin>198</ymin>
-			<xmax>437</xmax>
+			<xmax>446</xmax>
 			<ymax>480</ymax>
 		</bndbox>
 	</object>

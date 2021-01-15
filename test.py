@@ -1,8 +1,15 @@
 import serial
 import time
-from arduino import My_Serial
+ 
+ser = serial.Serial('/dev/tty.usbmodem141201', 115200)
+time.sleep(1.0)
+for i in range(10):
+        ser.write('a'.encode())
+        print("LED ON")
+        time.sleep(0.5)
+        ser.write('0'.encode())
+        print("LED OFF")
+        time.sleep(0.5)
 
-if __name__ == "__main__":
-        ser = My_Serial('/dev/ttyACM0', 115200, timeout=50)
-        ser.send('r;15;20.0:')
-        ser.close()
+ser.close()
+print("bbb")
