@@ -3,26 +3,27 @@ import cv2
 from camera import get_image
 from ssd_model import detect
 from route import make_route
+from position import my_position
 from arduino import My_Serial
 from order import Order
 from calc import *
 import time
 import numpy as np
-
+import serial
 import timeit
 
 VELOCITY = 15
 VELOCITY_DEG = 0.5
-DISTANCE = 100
+DISTANCE = 150
 orders = []
 orders = []
-import serial
+pos = 0
 
 if __name__ == "__main__":
     '''
     初期設定
     '''
-    ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=0.3)
+    ser = My_Serial('/dev/tty.usbmodem142101', 115200, timeout=0.3)
     
     #ser = My_Serial('/dev/tty.usbmodem141401', 115200, timeout=50)
     
@@ -48,6 +49,7 @@ if __name__ == "__main__":
         #print(labels)
         for box in boxs:
             #box.show()
+            print(box.x_pos + box.width / 2 - IMAGE_WIDTH/2)
             dist = calc_dist(box.width)                                             #机との距離の計算
             devi = calc_devi(box.width, box.x_pos + box.width / 2 - IMAGE_WIDTH/2)  #机のズレの計算
             print("dist: ", dist)
@@ -55,11 +57,13 @@ if __name__ == "__main__":
             if dist >= DISTANCE-50 and dist <= DISTANCE+50: #机との距離が規定の値の範囲内にあるかどうか
                 route = make_route(dist, devi)
                 for order, wait in route.orders:
-                    ser.send(order.encode())
+                    ser.mysend(order.encode())
                     time.sleep(np.abs(wait))
-                ser.send('l:'.encode())
+                ser.mysend('l:'.encode())
                 time.sleep(5)
                 del(route)
             else:
                 continue
-        
+        move, pos = my_position(pos)
+        if move:
+            break

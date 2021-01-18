@@ -1,7 +1,7 @@
 import serial
 
 class My_Serial(serial.Serial):
-    def send(self, msgs):
+    def mysend(self, msgs):
         print("<Arduino module>")
         print("send message: ", msgs)
         self.write(msgs)

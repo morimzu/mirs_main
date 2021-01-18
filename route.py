@@ -49,7 +49,7 @@ class Route:
 
     def make_order(self):
         self.orders.append([Order('r', VELOCITY, self.ma).order, self.ma/VELOCITY + 0.5])
-        self.orders.append([Order('t', VELOCITY_DEG, self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
-        self.orders.append([Order('r', VELOCITY, self.dist_run).order, self.dist_run/VELOCITY + 0.5])
         self.orders.append([Order('t', VELOCITY_DEG, -1*self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
-        self.orders.append([Order('r', VELOCITY, self.ma).order, self.ma/VELOCITY + 0.5])
+        self.orders.append([Order('r', VELOCITY, self.dist_run).order, self.dist_run/VELOCITY + 0.5])
+        self.orders.append([Order('t', VELOCITY_DEG, self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
+        self.orders.append([Order('r', VELOCITY, self.ma + 20).order, self.ma/VELOCITY + 0.5])

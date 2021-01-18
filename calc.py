@@ -18,7 +18,7 @@ def calc_dist(width):
 def calc_devi(width, devi):
     sign = 1
     if devi <0: # ズレのピクセルの符号処理
-        devi =-devi
+        devi*=-1
         sign = -1
     t = width/27.5  # 机との距離において1cmが何ピクセルなのかを求める
     devi = devi/t

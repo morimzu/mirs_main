@@ -1,3 +1,5 @@
+import numpy as np
+
 class Order:
     def __init__(self, target, act1, act2):
         self.target = target
@@ -6,5 +8,11 @@ class Order:
         self.order = self.format()
     
     def format(self):
-        order = self.target + ';' + str(self.act1) + ';' + str(self.act2) + ':'
+        if np.abs(self.act2) < 10:
+            if self.act2 < 0:
+                order = self.target + ';' + str(self.act1) + ';' + '-0' + str(np.abs(self.act2)) + ':'
+            else:
+                order = self.target + ';' + str(self.act1) + ';' + '0' + str(np.abs(self.act2)) + ':'
+        else:
+            order = self.target + ';' + str(self.act1) + ';' + str(self.act2) + ':'
         return order
