@@ -23,9 +23,8 @@ void setup() {
   
 void loop() {
   //test_batt();
-  //test_encoder();
-
-  serial_com();
-  Serial.println("OK");
-
+  if(Serial.available() > 0) {
+    serial_com();
+    Serial.println("OK");
+  }
 }

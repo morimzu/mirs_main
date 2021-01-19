@@ -57,8 +57,8 @@ void serial_com() {
 
       switch (session) {
         case 0: // 制御対象
-          //Serial.println(session);
-          //Serial.println(srial_btoi(val));
+          Serial.println(session);
+          Serial.println(serial_btoi(val));
           t += serial_btoi(val);
           break;
 
