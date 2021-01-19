@@ -5,7 +5,7 @@ class My_Serial(serial.Serial):
         print("<Arduino module>")
         print("send message: ", msgs)
         self.write(msgs)
-        self.check_response()
+        #self.check_response()
         
     def check_response(self):
         print("Now waiting a response from the Arduino.")

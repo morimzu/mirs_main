@@ -10,6 +10,7 @@ ma2=20
 #回転する時に必要な幅
 
 import math
+import numpy as np
 from pprint import pprint
 from order import Order
 
@@ -36,14 +37,15 @@ def make_route(dist, dif):
     #print(dist_run)   #斜めに進む分の距離
     #print(angle_direction)  #進みたい方向の角度
     #print(angle_rotate) #機体を移転させる角度 実際に回転させる角度 [deg]
-    route = Route(ma, angle_rotate, dist_run)
+    route = Route(ma, angle_rotate, dist_run, dif)
     return route
 
 class Route:
-    def __init__(self, ma, angle_rotate, dist_run):
+    def __init__(self, ma, angle_rotate, dist_run, devi):
         self.ma = ma
         self.angle_rotate = angle_rotate
         self.dist_run = dist_run
+        self.devi = np.abs(devi)
         self.orders = []
         self.make_order()
 
@@ -52,4 +54,4 @@ class Route:
         self.orders.append([Order('t', VELOCITY_DEG, -1*self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
         self.orders.append([Order('r', VELOCITY, self.dist_run).order, self.dist_run/VELOCITY + 0.5])
         self.orders.append([Order('t', VELOCITY_DEG, self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
-        self.orders.append([Order('r', VELOCITY, self.ma + 20).order, self.ma/VELOCITY + 0.5])
+        self.orders.append([Order('r', VELOCITY, self.ma + 10 + pow(self.devi, 2)/40).order, self.ma/VELOCITY + 0.5])
