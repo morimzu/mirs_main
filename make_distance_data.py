@@ -35,11 +35,11 @@ if __name__ == "__main__":
         print("If you are ready press any keys and Enter.")
 
         input()
-    distance = 1
+    distance = 0
     for i, image in enumerate(images):
         labels, boxs = detect(image, count)
         for box in boxs:
-            dist += [distance*10]
+            dist += [distance*10+100]
             x_pos += [box.x_pos]
             y_pos += [box.y_pos]
             width += [box.width]
