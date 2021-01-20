@@ -25,7 +25,7 @@ if __name__ == "__main__":
     '''
     #ser = My_Serial('/dev/tty.usbmodem142101', 115200, timeout=0.3)
     
-    ser = My_Serial('/dev/ttyACM1', 115200, timeout=50)
+    ser = My_Serial('/dev/ttyACM0', 115200, timeout=50)
     
     while True:
         count = 1

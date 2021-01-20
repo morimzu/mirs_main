@@ -54,4 +54,4 @@ class Route:
         self.orders.append([Order('t', VELOCITY_DEG, -1*self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
         self.orders.append([Order('r', VELOCITY, self.dist_run).order, self.dist_run/VELOCITY + 0.5])
         self.orders.append([Order('t', VELOCITY_DEG, self.angle_rotate).order, self.angle_rotate/VELOCITY_DEG + 0.5])
-        self.orders.append([Order('r', VELOCITY, self.ma + 10 + pow(self.devi, 2)/40).order, self.ma/VELOCITY + 0.5])
+        self.orders.append([Order('r', VELOCITY, self.ma + 10 + self.devi**2/50).order, self.ma/VELOCITY + 0.5])
