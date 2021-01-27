@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>deskImages_00247.jpg</filename>
+	<path>/Users/mizuki/Document/学校関係/電子機械設計制作/mirs_main/VOCdevkit/DESK/JPEGImages/deskImages_00247.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1920</width>
+		<height>1080</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>desk</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>887</xmin>
+			<ymin>584</ymin>
+			<xmax>1100</xmax>
+			<ymax>829</ymax>
+		</bndbox>
+	</object>
+</annotation>

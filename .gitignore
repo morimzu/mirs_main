@@ -4,3 +4,4 @@ weights/*.pth
 images/*
 detect_img/*
 VOCdevkit/DESK/JPEGImages/*.jpg
+./labelimg

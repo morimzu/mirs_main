@@ -1,17 +1,22 @@
-void serial_com() {
+int serial_com() {
   int i = 0;  // orderの配列番号
   int k = 2;  // 数字の桁数
   int sign = 1;   // 制御値の正負を決める
   int t = 0; // 制御対象を示す変数
+  double batt = 0.0;
 
   int session = 0;  //命令文の中のどの要素なのかを示す
   // 0: 制御対象,  1: 制御内容1,  2: 制御内容2
   while (Serial.available() > 0) {
     val = Serial.read();
+    batt = io_get_batt();
+    if (batt < 5.0) {
+      return 1;
+    }
 
-    if (val == 'a') continue; //aはデータなしを示す．断続的にデータが送信されてしまった場合に対応させている．
+    else if (val == 'a') continue; //aはデータなしを示す．断続的にデータが送信されてしまった場合に対応させている．
 
-    if (val == ';') {
+    else if (val == ';') {
       Serial.println(session);
       session++;
       k = 2;
@@ -50,10 +55,9 @@ void serial_com() {
       act2 = 0;
       sign = 1;
       session = 0;
-      break;  //次の命令を読むためのループにうつる
+      return 0;  //次の命令を読むためのループにうつる
     }
     else {
-      order[i] = val;
 
       switch (session) {
         case 0: // 制御対象

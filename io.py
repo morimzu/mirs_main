@@ -16,8 +16,6 @@ if __name__ == '__main__':
             time.sleep(DELAY)
 
             block = i2c.read_i2c_block_data(address,0x00,4)
-            print("block[2]: ",block[2])
-            print("block[3]: ",block[3])
             distance = (block[2]<<8 | block[3])
             print(int(cnt),distance)
             cnt = cnt + 1

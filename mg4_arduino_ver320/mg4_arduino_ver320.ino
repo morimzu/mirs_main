@@ -3,7 +3,6 @@
   Ver2.0からの変更点　　　RaspberryPi とのシリアル通信の速度を9600bps から 115200bpsに変更した
 */
 byte val = 0;
-char order[30];
 
 #include "define.h"
 #include<string.h>
@@ -20,11 +19,17 @@ void setup() {
 }
   double act1 = 0.0;
   double act2 = 0.0;
+  double batt = 0.0;
   
 void loop() {
   //test_batt();
   if(Serial.available() > 0) {
-    serial_com();
+    if(serial_com()) {
+      while(io_get_batt() < 5.0) {
+        Serial.println("OK");
+        delay(100);
+      }
+    }
     Serial.println("OK");
   }
 }
